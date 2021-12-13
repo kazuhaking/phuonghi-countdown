@@ -1,37 +1,107 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
+    <title>Countdown</title>
+    <style>
 
-You can use the [editor on GitHub](https://github.com/kazuhaking/phuonghi-countdown/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+body{
+    background-color: #ffffff;
+}
+  
+#timer {
+  color: #eeeeee;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-size: .7em;
+  letter-spacing: 5px;
+}
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+.days, .hours, .minutes, .seconds {
+  display: inline-block;
+  padding: 20px;
+  width: 100px;
+  border-radius: 5px;
+}
 
-### Markdown
+.days {
+  background: #678983;
+  color: #181D31;
+  text-align: center;
+}
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+.hours {
+  background: #678983;
+  color: #181D31;
+  text-align: center;
+}
 
-```markdown
-Syntax highlighted code block
+.minutes {
+  background: #678983;
+  color: #181D31;
+  text-align: center;
+}
 
-# Header 1
-## Header 2
-### Header 3
+.seconds {
+  background: #678983;
+  color: #181D31;
+  text-align: center;
+}
 
-- Bulleted
-- List
+.numbers {
+  font-family: 'Montserrat', sans-serif;
+  color:  #183059;
+  font-size: 4em;
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+    
+<div id="timer">
 
-1. Numbered
-2. List
+    <div class="days"> 
+        <div  id="days"    class="numbers "> </div>days</div> 
+      <div class="hours"> 
+        <div  id="hours"   class="numbers"> </div>hours</div> 
+      <div class="minutes"> 
+        <div  id="minutes" class="numbers"> </div>minutes</div> 
+      <div   class="seconds"> 
+        <div id="seconds"  class="numbers"> </div>seconds</div> 
+      </div>
 
-**Bold** and _Italic_ and `Code` text
+</div>
 
-[Link](url) and ![Image](src)
-```
+</body>
+<script>
+    const year = new Date().getFullYear();
+const myDate = new Date('Jan 30, 2022 00:00:00');
+console.log(myDate);
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+// countdown
+let timer = setInterval(function() {
 
-### Jekyll Themes
+  const today = new Date().getTime();
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kazuhaking/phuonghi-countdown/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+  const diff = myDate - today;
 
-### Support or Contact
+  // calc
+  let days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+  // display
+  document.getElementById("days").innerHTML=days
+  document.getElementById("hours").innerHTML=hours
+  document.getElementById("minutes").innerHTML=minutes
+  document.getElementById("seconds").innerHTML=seconds
+
+
+
+}, 1);
+</script>
+</html>
